@@ -85,6 +85,7 @@ public class ShippingService {
         }
     }
 
+    //Made by Abdulaziz Alharbi
     public void deliverOrder(Integer shippingId) {
         Order order = orderRepository.findOrderById(shippingId);
         if (order == null) {
@@ -124,6 +125,7 @@ public class ShippingService {
         shippingRepository.save(shipping);
     }
 
+    //Made by Abdulaziz Alharbi
     public void assignShipper(Integer shippingId,String shipperName) {
         Shipping shipping = shippingRepository.findShippingById(shippingId);
         if (shipping == null){
