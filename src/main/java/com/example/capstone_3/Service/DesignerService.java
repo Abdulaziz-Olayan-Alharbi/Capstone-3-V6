@@ -56,6 +56,7 @@ public class DesignerService {
         designerRepository.delete(d);
     }
 
+    //Made by Abdulaziz Alharbi
     public void acceptOrder(Integer orderId,Integer designerId) {
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
@@ -75,6 +76,7 @@ public class DesignerService {
         orderRepository.save(o);
     }
 
+    //Made by Abdulaziz Alharbi
     public void rejectOrder(Integer orderId,Integer designerId) {
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
@@ -116,6 +118,7 @@ public class DesignerService {
         return ratingRepository.findRatingByDesigner(designer);
     }
 
+    //Made by Abdulaziz Alharbi
     public double totalRevenue(Integer designerId){
         Designer designer = designerRepository.findDesignerById(designerId);
         if (designer == null){
