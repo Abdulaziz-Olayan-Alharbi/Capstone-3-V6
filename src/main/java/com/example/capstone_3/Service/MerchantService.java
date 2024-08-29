@@ -51,6 +51,7 @@ public class MerchantService {
         merchantRepository.delete(m);
     }
 
+    //Made by Abdulaziz Alharbi
     public void acceptOrder(Integer orderId,Integer merchantId) {
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
@@ -70,6 +71,7 @@ public class MerchantService {
         orderRepository.save(o);
     }
 
+    //Made by Abdulaziz Alharbi
     public void rejectOrder(Integer orderId,Integer merchantId) {
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
@@ -127,6 +129,7 @@ public class MerchantService {
         return ratingRepository.findRatingByMerchant(merchant);
     }
 
+    //Made by Abdulaziz Alharbi
     public double totalRevenue(Integer merchantId) {
         Merchant merchant = merchantRepository.findMerchantById(merchantId);
         if (merchant == null) {
