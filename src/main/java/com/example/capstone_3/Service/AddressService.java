@@ -17,6 +17,7 @@ public class AddressService {
     private final AddressRepository addressRepository;
     private final CustomerRepository customerRepository;
 
+    //CRUD Made by Abdulaziz Alharbi
     public List<Address> getAllAddresses() {
         return addressRepository.findAll();
     }
