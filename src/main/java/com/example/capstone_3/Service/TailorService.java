@@ -60,6 +60,7 @@ public class TailorService {
         tailorRepository.delete(t);
     }
 
+    //Made by Abdulaziz Alharbi
     public void acceptOrder(Integer orderId,Integer tailorId) {
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
@@ -79,6 +80,7 @@ public class TailorService {
         orderRepository.save(o);
     }
 
+    //Made by Abdulaziz Alharbi
     public void rejectOrder(Integer orderId,Integer tailorId) {
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
@@ -120,6 +122,7 @@ public class TailorService {
         return ratingRepository.findRatingByTailors(tailor);
     }
 
+    //Made by Abdulaziz Alharbi
     public double totalRevenue(Integer tailorId) {
         Tailor tailor = tailorRepository.findTailorById(tailorId);
         if (tailor == null) {
@@ -153,6 +156,7 @@ public class TailorService {
         return tailorInfoList;
     }
 
+    //Made by Abdulaziz Alharbi
     public void finish(Integer orderId,Integer tailorId){
         Order o = orderRepository.findOrderById(orderId);
         if (o==null){
