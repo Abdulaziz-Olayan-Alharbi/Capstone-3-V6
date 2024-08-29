@@ -101,6 +101,7 @@ public class FabricService {
         merchantRepository.save(m);
     }
 
+    //Made by Abdulaziz Alharbi
     public String topSellColor(){
         List<Order> orders = orderService.getAllOrders();
         if (orders.isEmpty()) {
