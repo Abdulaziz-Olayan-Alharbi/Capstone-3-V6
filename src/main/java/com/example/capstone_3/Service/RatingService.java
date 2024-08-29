@@ -53,11 +53,20 @@ public class RatingService {
         ratingRepository.delete(r);
     }
 
+    
     // Save a new rating for a merchant
-    public Rating rateMerchant(Integer merchantId,Rating rating) {
+    public Rating rateMerchant(Integer merchantId,Integer customerId,Rating rating) {
         Merchant merchant = merchantRepository.findMerchantById(merchantId);
         if(merchant == null) {
             throw new ApiException("Merchant with id '" + merchantId + "' not found");
+        }
+        Customer customer = customerRepository.findCustomerById(customerId);
+        if(customer == null) {
+            throw new ApiException("Customer with id '" + customerId + "' not found");
+        }
+        Order order = orderRepository.findOrderByMerchantAndCustom(merchant,customer);
+        if(order == null) {
+            throw new ApiException("Customer must make order with merchant to rate");
         }
         Rating r = new Rating();
         r.setMerchant(merchant);
@@ -72,13 +81,21 @@ public class RatingService {
     }
 
     // Save a new rating for a Tailor
-    public Rating rateTailor(Integer tailorId,Rating rating) {
+    public Rating rateTailor(Integer tailorId,Integer customerId,Rating rating) {
         Tailor tailor = tailorRepository.findTailorById(tailorId);
         if(tailor == null) {
             throw new ApiException("Tailor with id '" + tailorId + "' not found");
         }
+        Customer customer = customerRepository.findCustomerById(customerId);
+        if(customer == null) {
+            throw new ApiException("Customer with id '" + customerId + "' not found");
+        }
+        Order order = orderRepository.findOrderByTailorAndCustom(tailor,customer);
+        if(order == null) {
+            throw new ApiException("Customer must make order with tailor to rate");
+        }
         Rating r = new Rating();
-        r.setTailors(tailor);
+        r.setTailor(tailor);
         if(rating.getValue()>5){
             throw new ApiException("Rating value must be from 1-5 ");
         }else{
@@ -90,11 +107,20 @@ public class RatingService {
     }
 
     // Save a new rating for a Tailor
-    public Rating rateDesigner(Integer designerId,Rating rating) {
+    public Rating rateDesigner(Integer designerId,Integer customerId,Rating rating) {
         Designer designer = designerRepository.findDesignerById(designerId);
         if(designer == null) {
             throw new ApiException("Designer with id '" + designerId + "' not found");
         }
+        Customer customer = customerRepository.findCustomerById(customerId);
+        if(customer == null) {
+            throw new ApiException("Customer with id '" + customerId + "' not found");
+        }
+        Order order = orderRepository.findOrderByDesignerAndCustom(designer,customer);
+        if(order == null) {
+            throw new ApiException("Customer must make order with designer to rate");
+        }
+
         Rating r = new Rating();
         r.setDesigner(designer);
         if(rating.getValue()>5){
